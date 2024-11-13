@@ -1,0 +1,36 @@
+<div class="p-6 mg-20 mx-900 mx-auto bg-pink-50 rounded-lg shadow-lg border border-red-300">
+    <h3 class="text-3xl font-extrabold mb-4 text-center text-red-800">Detalle del Pedido</h3>
+   
+    <table class="w-full mb-4 border border-red-200 rounded-lg">
+        <thead>
+            <tr class="bg-pink-200 text-red-900">
+                <th class="p-4 border-b border-red-300">Tamaño</th>
+                <th class="p-4 border-b border-red-300">Ingredientes</th>
+                <th class="p-4 border-b border-red-300">Cantidad</th>
+                <th class="p-4 border-b border-red-300">Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pizza of pizzas" class="text-center even:bg-pink-100 odd:bg-pink-200 text-red-800">
+                <td class="p-4 border-b border-red-300">{{ pizza.tamano }}</td>
+                <td class="p-4 border-b border-red-300">{{ pizza.ingredientes2.join(', ') }}</td>
+                <td class="p-4 border-b border-red-300">{{ pizza.cantidad }}</td>
+                <td class="p-4 border-b border-red-300">${{ pizza.subtotal }}</td>
+            </tr>
+        </tbody>
+    </table>
+   
+    <h4 class="text-2xl font-bold mb-4 text-right text-red-700">Total del Pedido: ${{ totalPedido }}</h4>
+   
+    <div class="flex justify-between">
+        <button
+            class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-5 rounded-md transition duration-300"
+            (click)="quitarUltimoPedido()">Quitar
+        </button>
+   
+        <button
+            class="bg-pink-600 hover:bg-pink-700 text-white font-bold py-2 px-5 rounded-md transition duration-300"
+            (click)="finalizarPedido()">Terminar
+        </button>
+    </div>
+</div>

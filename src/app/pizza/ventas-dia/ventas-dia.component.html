@@ -1,0 +1,33 @@
+<div class="p-6 mg-20 mx-900 mx-auto bg-pink-100 rounded-lg shadow-lg border border-red-400">
+    <h3 class="text-4xl font-extrabold mb-4 text-center text-red-800">Ventas del Día</h3>
+   
+    <div class="mb-4">
+        <select class="w-full border border-red-400 bg-white text-red-900 rounded-lg p-3 mb-3 focus:ring-2 focus:ring-red-500"
+            [(ngModel)]="diaSeleccionado">
+            <option value="" disabled selected>Selecciona un día</option>
+            <option value="Lunes">Lunes</option>
+            <option value="Martes">Martes</option>
+            <option value="Miércoles">Miércoles</option>
+            <option value="Jueves">Jueves</option>
+            <option value="Viernes">Viernes</option>
+            <option value="Sábado">Sábado</option>
+            <option value="Domingo">Domingo</option>
+        </select>
+   
+        <button
+            class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 rounded-md transition duration-300"
+            (click)="mostrarVentasPorDia()">
+            Mostrar Ventas del Día
+        </button>
+    </div>
+   
+    <div *ngIf="pedidosDia.length > 0" class="mt-4">
+        <h4 class="text-2xl font-bold mb-3 text-red-700">Pedidos</h4>
+        <ul class="list-disc pl-5 space-y-1 text-red-800">
+            <li *ngFor="let pedido of pedidosDia" class="text-red-900">
+                {{ pedido.nombreCliente }} - Total: ${{ pedido.total }}
+            </li>
+        </ul>
+        <h4 class="text-2xl font-bold mt-4 text-red-700">Ventas Totales: ${{ ventasTotalesDia }}</h4>
+    </div>
+</div>
